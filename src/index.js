@@ -1,5 +1,4 @@
 import "./styles.css";
-import WaveformData from "waveform-data";
 import Peaks from "peaks.js";
 import { saveAs } from 'file-saver';
 
@@ -33,7 +32,11 @@ Peaks.init(options, function(err, peaks) {
 
   document.getElementById('markAyah-button').addEventListener('click', function() {
     let currentTime = peaks.player.getCurrentTime()
-    peaks.points.add({ time: currentTime })
+    peaks.points.add({ 
+      time: currentTime,
+      editable: true,
+      labelText: `Ayah ${peaks.points.getPoints().length + 1}`
+    })
   });
 
   document.getElementById('export-button').addEventListener('click', function() {
